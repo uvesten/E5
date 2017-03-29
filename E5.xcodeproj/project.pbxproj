@@ -3,18 +3,21 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 48;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		D5ACC5351E8BAAAB002C485D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ACC5341E8BAAAB002C485D /* AppDelegate.swift */; };
-		D5ACC5371E8BAAAB002C485D /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ACC5361E8BAAAB002C485D /* FirstViewController.swift */; };
 		D5ACC5391E8BAAAB002C485D /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ACC5381E8BAAAB002C485D /* SecondViewController.swift */; };
 		D5ACC53C1E8BAAAB002C485D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5ACC53A1E8BAAAB002C485D /* Main.storyboard */; };
 		D5ACC53E1E8BAAAB002C485D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5ACC53D1E8BAAAB002C485D /* Assets.xcassets */; };
 		D5ACC5411E8BAAAB002C485D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5ACC53F1E8BAAAB002C485D /* LaunchScreen.storyboard */; };
 		D5ACC54C1E8BAAAB002C485D /* E5Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ACC54B1E8BAAAB002C485D /* E5Tests.swift */; };
 		D5ACC5571E8BAAAB002C485D /* E5UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ACC5561E8BAAAB002C485D /* E5UITests.swift */; };
+		D5ACC5691E8BB2BD002C485D /* InventoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ACC5681E8BB2BD002C485D /* InventoryTableViewController.swift */; };
+		D5ACC56B1E8BB2D3002C485D /* InventoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ACC56A1E8BB2D3002C485D /* InventoryTableViewCell.swift */; };
+		D5ACC56D1E8BB45D002C485D /* Inventory.plist in Resources */ = {isa = PBXBuildFile; fileRef = D5ACC56C1E8BB45D002C485D /* Inventory.plist */; };
+		D5ACC56F1E8BC39D002C485D /* InventoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ACC56E1E8BC39D002C485D /* InventoryItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +40,6 @@
 /* Begin PBXFileReference section */
 		D5ACC5311E8BAAAB002C485D /* E5.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = E5.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5ACC5341E8BAAAB002C485D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D5ACC5361E8BAAAB002C485D /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		D5ACC5381E8BAAAB002C485D /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		D5ACC53B1E8BAAAB002C485D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D5ACC53D1E8BAAAB002C485D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -49,6 +51,10 @@
 		D5ACC5521E8BAAAB002C485D /* E5UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = E5UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5ACC5561E8BAAAB002C485D /* E5UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = E5UITests.swift; sourceTree = "<group>"; };
 		D5ACC5581E8BAAAB002C485D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D5ACC5681E8BB2BD002C485D /* InventoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryTableViewController.swift; sourceTree = "<group>"; };
+		D5ACC56A1E8BB2D3002C485D /* InventoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryTableViewCell.swift; sourceTree = "<group>"; };
+		D5ACC56C1E8BB45D002C485D /* Inventory.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Inventory.plist; sourceTree = "<group>"; };
+		D5ACC56E1E8BC39D002C485D /* InventoryItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,12 +106,15 @@
 			isa = PBXGroup;
 			children = (
 				D5ACC5341E8BAAAB002C485D /* AppDelegate.swift */,
-				D5ACC5361E8BAAAB002C485D /* FirstViewController.swift */,
 				D5ACC5381E8BAAAB002C485D /* SecondViewController.swift */,
 				D5ACC53A1E8BAAAB002C485D /* Main.storyboard */,
 				D5ACC53D1E8BAAAB002C485D /* Assets.xcassets */,
 				D5ACC53F1E8BAAAB002C485D /* LaunchScreen.storyboard */,
 				D5ACC5421E8BAAAB002C485D /* Info.plist */,
+				D5ACC5681E8BB2BD002C485D /* InventoryTableViewController.swift */,
+				D5ACC56E1E8BC39D002C485D /* InventoryItem.swift */,
+				D5ACC56A1E8BB2D3002C485D /* InventoryTableViewCell.swift */,
+				D5ACC56C1E8BB45D002C485D /* Inventory.plist */,
 			);
 			path = E5;
 			sourceTree = "<group>";
@@ -211,7 +220,7 @@
 				};
 			};
 			buildConfigurationList = D5ACC52C1E8BAAAA002C485D /* Build configuration list for PBXProject "E5" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -238,6 +247,7 @@
 				D5ACC5411E8BAAAB002C485D /* LaunchScreen.storyboard in Resources */,
 				D5ACC53E1E8BAAAB002C485D /* Assets.xcassets in Resources */,
 				D5ACC53C1E8BAAAB002C485D /* Main.storyboard in Resources */,
+				D5ACC56D1E8BB45D002C485D /* Inventory.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,7 +274,9 @@
 			files = (
 				D5ACC5391E8BAAAB002C485D /* SecondViewController.swift in Sources */,
 				D5ACC5351E8BAAAB002C485D /* AppDelegate.swift in Sources */,
-				D5ACC5371E8BAAAB002C485D /* FirstViewController.swift in Sources */,
+				D5ACC56B1E8BB2D3002C485D /* InventoryTableViewCell.swift in Sources */,
+				D5ACC56F1E8BC39D002C485D /* InventoryItem.swift in Sources */,
+				D5ACC5691E8BB2BD002C485D /* InventoryTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
