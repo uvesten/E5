@@ -74,7 +74,7 @@ class InventoryTableViewController: UITableViewController {
         print(item)
         
         
-        cell.titlelabel.text = item.name
+        cell.titlelabel.text = item.symbol
         
         return cell
     }

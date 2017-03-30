@@ -17,6 +17,7 @@ class InventoryItem {
     //MARK: Properties
     
     var name: String
+    var symbol: String
     var unit: String
     var currency: String
     var unitPrice: Double
@@ -27,6 +28,10 @@ class InventoryItem {
     /// - Parameter dict: {[name: String], [unit: String], 
     ///                    [unitPrice: Double], [currency: String]}
     init(dict: [String : Any]) throws {
+        
+        guard let symbol = dict["symbol"] as? String else {
+            throw InventoryError.invalidInventoryItem(message: "Inventory item missing or invalid \"symbol\"")
+        }
         
         guard let name = dict["name"] as? String else {
             throw InventoryError.invalidInventoryItem(message: "Inventory item missing or invalid \"name\"")
@@ -43,6 +48,7 @@ class InventoryItem {
             throw InventoryError.invalidInventoryItem(message: "Inventory item missing or invalid \"currency\"")
         }
         
+        self.symbol = symbol
         self.name = name
         self.unit = unit
         self.unitPrice = unitPrice

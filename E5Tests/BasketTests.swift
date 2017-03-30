@@ -21,9 +21,9 @@ class BasketTests: XCTestCase {
         super.setUp()
         
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        let anItemDict1 = ["name": "test", "unitPrice": 0.8, "unit": "bag", "currency":"USD"] as [String : Any]
+        let anItemDict1 = ["symbol": "🥐", "name": "test", "unitPrice": 0.8, "unit": "bag", "currency":"USD"] as [String : Any]
         
-        let anItemDict2 = ["name": "test2", "unitPrice": 0.8, "unit": "bag", "currency":"USD"] as [String : Any]
+        let anItemDict2 = ["symbol": "🥐", "name": "test2", "unitPrice": 0.8, "unit": "bag", "currency":"USD"] as [String : Any]
         
         self.item1 = try! InventoryItem(dict: anItemDict1)
         self.item2 = try! InventoryItem(dict: anItemDict2)

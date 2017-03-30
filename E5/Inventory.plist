@@ -3,6 +3,8 @@
 <plist version="1.0">
 <array>
 	<dict>
+		<key>symbol</key>
+		<string>🍅</string>
 		<key>name</key>
 		<string>Tomatoes</string>
 		<key>unit</key>
@@ -13,6 +15,8 @@
 		<string>USD</string>
 	</dict>
 	<dict>
+		<key>symbol</key>
+		<string>🥚</string>
 		<key>name</key>
 		<string>Eggs</string>
 		<key>unit</key>
@@ -23,6 +27,8 @@
 		<string>USD</string>
 	</dict>
 	<dict>
+		<key>symbol</key>
+		<string>🥛</string>
 		<key>name</key>
 		<string>Milk</string>
 		<key>unit</key>
@@ -33,6 +39,8 @@
 		<string>USD</string>
 	</dict>
 	<dict>
+		<key>symbol</key>
+		<string>🥜</string>
 		<key>name</key>
 		<string>Beans</string>
 		<key>unit</key>

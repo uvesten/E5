@@ -23,7 +23,7 @@ class InventoryItemTests: XCTestCase {
     
     func testCreateWithValidItemAndCompare() {
                 
-        let anItemDict = ["name": "test", "unitPrice": 0.8, "unit": "bag", "currency":"USD"] as [String : Any]
+        let anItemDict = ["symbol": "🥐", "name": "test", "unitPrice": 0.8, "unit": "bag", "currency":"USD"] as [String : Any]
         
         print(anItemDict)
         
@@ -38,7 +38,7 @@ class InventoryItemTests: XCTestCase {
     
     func testAddInvalidItem1() {
         
-         let anItemDict = ["unitPrice": 0.8, "unit": "bag", "currency":"USD"] as [String : Any]
+         let anItemDict = ["symbol": "🥐", "unitPrice": 0.8, "unit": "bag", "currency":"USD"] as [String : Any]
         
         XCTAssertThrowsError(try InventoryItem(dict: anItemDict))
         
@@ -46,7 +46,7 @@ class InventoryItemTests: XCTestCase {
     
     func testAddInvalidItem2() {
         
-        let anItemDict = ["name": "test", "unitPrice": "0.8", "unit": "bag", "currency":"USD"] as [String : Any]
+        let anItemDict = ["symbol": "🥐", "name": "test", "unitPrice": "0.8", "unit": "bag", "currency":"USD"] as [String : Any]
         
         XCTAssertThrowsError(try InventoryItem(dict: anItemDict))
         
