@@ -12,6 +12,7 @@ class InventoryTableViewController: UITableViewController {
 
     // holds our inventory. Set up in viewDidLoad
     var inventoryArray = [InventoryItem]()
+    let basket = Basket()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,11 +26,17 @@ class InventoryTableViewController: UITableViewController {
         //
         // load the inventory from our plist file
         
-        if let path = Bundle.main.path(forResource: "Inventory", ofType: "plist"), let arr = NSArray(contentsOfFile: path) as? [[String:AnyObject]] {
+        if let path = Bundle.main.path(forResource: "Inventory", ofType: "plist"), let arr = NSArray(contentsOfFile: path) as? [[String: Any]] {
             // use swift dictionary as normal
             
             for item in arr {
-                inventoryArray.append(InventoryItem(dict:item))
+                do {
+                    try inventoryArray.append(InventoryItem(dict:item))
+                } catch InventoryError.invalidInventoryItem(let message) {
+                    fatalError(message)
+                } catch {
+                    fatalError("Unknown error parsing inventory")
+                }
             }
         }
     
@@ -117,5 +124,14 @@ class InventoryTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    //MARK: - Delegate
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let item = self.inventoryArray[indexPath.row]
+        
+        self.basket.addItem(item: item)
+        
+    }
 
 }

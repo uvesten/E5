@@ -7,7 +7,6 @@
 //
 
 import XCTest
-@testable import E5
 
 class E5Tests: XCTestCase {
     

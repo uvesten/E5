@@ -8,6 +8,9 @@
 
 import Foundation
 
+enum InventoryError: Error {
+    case invalidInventoryItem(message: String)
+}
 
 class InventoryItem {
     
@@ -16,25 +19,28 @@ class InventoryItem {
     var name: String
     var unit: String
     var currency: String
-    var unitPrice: Float
+    var unitPrice: Double
     
     
-    init(dict: [String:AnyObject]) {
+    /// Initialize an InventoryItem from a dictionary
+    ///
+    /// - Parameter dict: {[name: String], [unit: String], 
+    ///                    [unitPrice: Double], [currency: String]}
+    init(dict: [String : Any]) throws {
         
         guard let name = dict["name"] as? String else {
-            fatalError("Inventory is broken")
+            throw InventoryError.invalidInventoryItem(message: "Inventory item missing or invalid \"name\"")
         }
         
         guard let unit = dict["unit"] as? String else {
-            fatalError("Inventory is broken")
+            throw InventoryError.invalidInventoryItem(message: "Inventory item missing or invalid \"unit\"")
         }
         
-        guard let unitPrice = dict["unitPrice"] as? Float else {
-            fatalError("Inventory is broken")
-        }
+        guard let unitPrice = dict["unitPrice"] as? Double else {
+            throw InventoryError.invalidInventoryItem(message: "Inventory item missing or invalid \"unitPrice\"")        }
         
         guard let currency = dict["currency"] as? String else {
-            fatalError("Inventory is broken")
+            throw InventoryError.invalidInventoryItem(message: "Inventory item missing or invalid \"currency\"")
         }
         
         self.name = name
@@ -47,4 +53,20 @@ class InventoryItem {
     
     
     
+}
+
+extension InventoryItem: CustomStringConvertible {
+    var description: String {
+        return name
+    }
+}
+
+extension InventoryItem: Hashable {
+    var hashValue: Int {
+        return name.hashValue
+    }
+    
+    static func == (lhs: InventoryItem, rhs: InventoryItem) -> Bool {
+        return lhs.name == rhs.name
+    }
 }

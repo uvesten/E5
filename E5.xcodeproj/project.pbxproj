@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D53669821E8CEAF90082643A /* InventoryItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D53669811E8CEAF90082643A /* InventoryItemTests.swift */; };
+		D53669841E8CF8DB0082643A /* BasketTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D53669831E8CF8DB0082643A /* BasketTests.swift */; };
 		D5ACC5351E8BAAAB002C485D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ACC5341E8BAAAB002C485D /* AppDelegate.swift */; };
 		D5ACC5391E8BAAAB002C485D /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ACC5381E8BAAAB002C485D /* SecondViewController.swift */; };
 		D5ACC53C1E8BAAAB002C485D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5ACC53A1E8BAAAB002C485D /* Main.storyboard */; };
@@ -18,6 +20,7 @@
 		D5ACC56B1E8BB2D3002C485D /* InventoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ACC56A1E8BB2D3002C485D /* InventoryTableViewCell.swift */; };
 		D5ACC56D1E8BB45D002C485D /* Inventory.plist in Resources */ = {isa = PBXBuildFile; fileRef = D5ACC56C1E8BB45D002C485D /* Inventory.plist */; };
 		D5ACC56F1E8BC39D002C485D /* InventoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ACC56E1E8BC39D002C485D /* InventoryItem.swift */; };
+		D5ACC5711E8BC7B2002C485D /* Basket.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ACC5701E8BC7B2002C485D /* Basket.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +41,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D53669811E8CEAF90082643A /* InventoryItemTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryItemTests.swift; sourceTree = "<group>"; };
+		D53669831E8CF8DB0082643A /* BasketTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasketTests.swift; sourceTree = "<group>"; };
 		D5ACC5311E8BAAAB002C485D /* E5.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = E5.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5ACC5341E8BAAAB002C485D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D5ACC5381E8BAAAB002C485D /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
@@ -55,6 +60,7 @@
 		D5ACC56A1E8BB2D3002C485D /* InventoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryTableViewCell.swift; sourceTree = "<group>"; };
 		D5ACC56C1E8BB45D002C485D /* Inventory.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Inventory.plist; sourceTree = "<group>"; };
 		D5ACC56E1E8BC39D002C485D /* InventoryItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryItem.swift; sourceTree = "<group>"; };
+		D5ACC5701E8BC7B2002C485D /* Basket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Basket.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +119,7 @@
 				D5ACC5421E8BAAAB002C485D /* Info.plist */,
 				D5ACC5681E8BB2BD002C485D /* InventoryTableViewController.swift */,
 				D5ACC56E1E8BC39D002C485D /* InventoryItem.swift */,
+				D5ACC5701E8BC7B2002C485D /* Basket.swift */,
 				D5ACC56A1E8BB2D3002C485D /* InventoryTableViewCell.swift */,
 				D5ACC56C1E8BB45D002C485D /* Inventory.plist */,
 			);
@@ -122,6 +129,8 @@
 		D5ACC54A1E8BAAAB002C485D /* E5Tests */ = {
 			isa = PBXGroup;
 			children = (
+				D53669831E8CF8DB0082643A /* BasketTests.swift */,
+				D53669811E8CEAF90082643A /* InventoryItemTests.swift */,
 				D5ACC54B1E8BAAAB002C485D /* E5Tests.swift */,
 				D5ACC54D1E8BAAAB002C485D /* Info.plist */,
 			);
@@ -275,6 +284,7 @@
 				D5ACC5391E8BAAAB002C485D /* SecondViewController.swift in Sources */,
 				D5ACC5351E8BAAAB002C485D /* AppDelegate.swift in Sources */,
 				D5ACC56B1E8BB2D3002C485D /* InventoryTableViewCell.swift in Sources */,
+				D5ACC5711E8BC7B2002C485D /* Basket.swift in Sources */,
 				D5ACC56F1E8BC39D002C485D /* InventoryItem.swift in Sources */,
 				D5ACC5691E8BB2BD002C485D /* InventoryTableViewController.swift in Sources */,
 			);
@@ -285,6 +295,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D5ACC54C1E8BAAAB002C485D /* E5Tests.swift in Sources */,
+				D53669841E8CF8DB0082643A /* BasketTests.swift in Sources */,
+				D53669821E8CEAF90082643A /* InventoryItemTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -523,6 +535,7 @@
 				D5ACC55D1E8BAAAB002C485D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D5ACC55E1E8BAAAB002C485D /* Build configuration list for PBXNativeTarget "E5Tests" */ = {
 			isa = XCConfigurationList;
@@ -531,6 +544,7 @@
 				D5ACC5601E8BAAAB002C485D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D5ACC5611E8BAAAB002C485D /* Build configuration list for PBXNativeTarget "E5UITests" */ = {
 			isa = XCConfigurationList;
@@ -539,6 +553,7 @@
 				D5ACC5631E8BAAAB002C485D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
