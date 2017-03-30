@@ -12,7 +12,9 @@ class InventoryTableViewController: UITableViewController {
 
     // holds our inventory. Set up in viewDidLoad
     var inventoryArray = [InventoryItem]()
-    let basket = Basket()
+    
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,12 +71,11 @@ class InventoryTableViewController: UITableViewController {
             fatalError("The dequeued cell is not an instance of MealTableViewCell.")
         }
         
-        // Fetches the appropriate meal for the data source layout.
         let item = self.inventoryArray[indexPath.row]
         print(item)
         
         
-        cell.titlelabel.text = item.symbol
+        cell.symbolLabel.text = item.symbol
         
         return cell
     }
@@ -130,7 +131,7 @@ class InventoryTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let item = self.inventoryArray[indexPath.row]
         
-        self.basket.addItem(item: item)
+        appDelegate.basket.addItem(item: item)
         
     }
 

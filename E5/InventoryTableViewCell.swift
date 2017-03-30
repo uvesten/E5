@@ -12,7 +12,12 @@ class InventoryTableViewCell: UITableViewCell {
     
     //MARK: Properties
 
-    @IBOutlet weak var titlelabel: UILabel!
+    
+    @IBOutlet weak var symbolLabel: UILabel!
+    @IBOutlet weak var mainLabel: UILabel!
+    @IBAction func addToBasket(_ sender: Any) {
+    }
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
