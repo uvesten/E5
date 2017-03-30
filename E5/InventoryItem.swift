@@ -12,7 +12,7 @@ enum InventoryError: Error {
     case invalidInventoryItem(message: String)
 }
 
-class InventoryItem {
+struct InventoryItem {
     
     //MARK: Properties
     
