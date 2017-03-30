@@ -69,10 +69,19 @@ extension InventoryItem: CustomStringConvertible {
 
 extension InventoryItem: Hashable {
     var hashValue: Int {
-        return name.hashValue
+        let identifierString = name + unit
+        return identifierString.hashValue
+    }
+    
+}
+
+extension InventoryItem: Comparable {
+    static func < (lhs: InventoryItem, rhs: InventoryItem) -> Bool {
+        return lhs.name < rhs.name
     }
     
     static func == (lhs: InventoryItem, rhs: InventoryItem) -> Bool {
         return lhs.name == rhs.name
     }
 }
+

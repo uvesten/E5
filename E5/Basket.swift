@@ -8,6 +8,10 @@
 
 import Foundation
 
+enum BasketError: Error {
+    case removeUnexisting(message: String)
+}
+
 
 /// Our main shopping basket class
 /// Holds inventoryItems and their associated counts
@@ -19,16 +23,43 @@ class Basket {
     /// Add an item to our shopping basket
     ///
     /// - Parameter item: An InventoryItem
-    func addItem(item: InventoryItem) {
+    /// - Returns: The number of that item in the basket
+    func addItem(item: InventoryItem) -> Int {
         
         guard items[item] != nil else {
             items[item] = 1
-            return
+            return 1
         }
         
         items[item]? += 1
         
+        return items[item]!
+        
     }
+    
+    /// Remove an item from the basket
+    ///
+    /// - Parameter item: an InventoryItem
+    /// - Returns: the number of that item after removal
+    /// - Throws: BasketError.removeUnexisting on trying to remove an item not in basket
+    func removeItem(item: InventoryItem) throws -> Int {
+        
+        guard items[item] != nil else {
+            throw BasketError.removeUnexisting(message: "Tried to remove unexisting item " + item.name + " from basket.")
+        }
+        
+        items[item]? -= 1
+        let itemCount = items[item]!
+        
+        if (itemCount == 0) {
+            items.removeValue(forKey: item)
+        }
+        
+        return itemCount
+        
+    }
+    
+    
     
     
 }

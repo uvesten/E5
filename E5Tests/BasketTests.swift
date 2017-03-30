@@ -39,7 +39,7 @@ class BasketTests: XCTestCase {
     func testAddOneItem() {
         let basket = Basket()
         
-        basket.addItem(item: self.item1)
+        XCTAssert(basket.addItem(item: self.item1) == 1)
         
         XCTAssertTrue(basket.items.count == 1)
         XCTAssertTrue(basket.items[item1] == 1)
@@ -49,8 +49,8 @@ class BasketTests: XCTestCase {
     func testAddTwoSameItems() {
         let basket = Basket()
         
-        basket.addItem(item: self.item1)
-        basket.addItem(item: self.item1)
+        XCTAssert(basket.addItem(item: self.item1) == 1)
+        XCTAssert(basket.addItem(item: self.item1) == 2)
         
         XCTAssertTrue(basket.items.count == 1)
         XCTAssertTrue(basket.items[item1] == 2)
@@ -60,13 +60,44 @@ class BasketTests: XCTestCase {
     func testAddTwoDifferentItems() {
         let basket = Basket()
         
-        basket.addItem(item: self.item1)
-        basket.addItem(item: self.item2)
+        let i1count = basket.addItem(item: self.item1)
+        let i2count = basket.addItem(item: self.item2)
+        
+        XCTAssert(i1count == 1)
+        XCTAssert(i2count == 1)
         
         XCTAssertTrue(basket.items.count == 2)
         XCTAssertTrue(basket.items[item1] == 1)
         XCTAssertTrue(basket.items[item2] == 1)
 
+        
+    }
+    
+    func testAddAndRemove() {
+        let basket = Basket()
+        
+        XCTAssert(basket.addItem(item: self.item1) == 1)
+        XCTAssert(try basket.removeItem(item: self.item1) == 0)
+        
+        
+        
+        
+    }
+    
+    func testRemoveUnexisting() {
+        let basket = Basket()
+        
+        XCTAssertThrowsError(try basket.removeItem(item: self.item1) == 0)
+        
+        
+    }
+    
+    func testRemoveTooMany() {
+        let basket = Basket()
+        XCTAssert(basket.addItem(item: self.item1) == 1)
+        XCTAssert(try basket.removeItem(item: self.item1) == 0)
+        
+        XCTAssertThrowsError(try basket.removeItem(item: self.item1) == 0)
         
     }
     
