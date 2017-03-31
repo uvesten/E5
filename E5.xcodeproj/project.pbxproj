@@ -23,6 +23,10 @@
 		D5ACC56D1E8BB45D002C485D /* Inventory.plist in Resources */ = {isa = PBXBuildFile; fileRef = D5ACC56C1E8BB45D002C485D /* Inventory.plist */; };
 		D5ACC56F1E8BC39D002C485D /* InventoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ACC56E1E8BC39D002C485D /* InventoryItem.swift */; };
 		D5ACC5711E8BC7B2002C485D /* Basket.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ACC5701E8BC7B2002C485D /* Basket.swift */; };
+		D5BB408B1E8E5C1A004A00BF /* Settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = D5BB408A1E8E5C1A004A00BF /* Settings.plist */; };
+		D5BB408D1E8E5D37004A00BF /* SettingsHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BB408C1E8E5D37004A00BF /* SettingsHandler.swift */; };
+		D5BB408F1E8E61A4004A00BF /* CurrencyLayerClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BB408E1E8E61A4004A00BF /* CurrencyLayerClient.swift */; };
+		D5BB40911E8E6482004A00BF /* CurrencyLayerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BB40901E8E6482004A00BF /* CurrencyLayerTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +69,10 @@
 		D5ACC56C1E8BB45D002C485D /* Inventory.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Inventory.plist; sourceTree = "<group>"; };
 		D5ACC56E1E8BC39D002C485D /* InventoryItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryItem.swift; sourceTree = "<group>"; };
 		D5ACC5701E8BC7B2002C485D /* Basket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Basket.swift; sourceTree = "<group>"; };
+		D5BB408A1E8E5C1A004A00BF /* Settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Settings.plist; sourceTree = "<group>"; };
+		D5BB408C1E8E5D37004A00BF /* SettingsHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsHandler.swift; sourceTree = "<group>"; };
+		D5BB408E1E8E61A4004A00BF /* CurrencyLayerClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyLayerClient.swift; sourceTree = "<group>"; };
+		D5BB40901E8E6482004A00BF /* CurrencyLayerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyLayerTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +145,9 @@
 				D5ACC56A1E8BB2D3002C485D /* InventoryTableViewCell.swift */,
 				D53669851E8D0FD20082643A /* BasketTableViewCell.swift */,
 				D5ACC56C1E8BB45D002C485D /* Inventory.plist */,
+				D5BB408A1E8E5C1A004A00BF /* Settings.plist */,
+				D5BB408C1E8E5D37004A00BF /* SettingsHandler.swift */,
+				D5BB408E1E8E61A4004A00BF /* CurrencyLayerClient.swift */,
 			);
 			path = E5;
 			sourceTree = "<group>";
@@ -144,6 +155,7 @@
 		D5ACC54A1E8BAAAB002C485D /* E5Tests */ = {
 			isa = PBXGroup;
 			children = (
+				D5BB40901E8E6482004A00BF /* CurrencyLayerTest.swift */,
 				D53669831E8CF8DB0082643A /* BasketTests.swift */,
 				D53669811E8CEAF90082643A /* InventoryItemTests.swift */,
 				D5ACC54B1E8BAAAB002C485D /* E5Tests.swift */,
@@ -273,6 +285,7 @@
 				D5ACC53E1E8BAAAB002C485D /* Assets.xcassets in Resources */,
 				D5ACC53C1E8BAAAB002C485D /* Main.storyboard in Resources */,
 				D5ACC56D1E8BB45D002C485D /* Inventory.plist in Resources */,
+				D5BB408B1E8E5C1A004A00BF /* Settings.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -315,12 +328,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				D5ACC5391E8BAAAB002C485D /* BasketViewController.swift in Sources */,
+				D5BB408F1E8E61A4004A00BF /* CurrencyLayerClient.swift in Sources */,
 				D5ACC5351E8BAAAB002C485D /* AppDelegate.swift in Sources */,
 				D5ACC56B1E8BB2D3002C485D /* InventoryTableViewCell.swift in Sources */,
 				D5ACC5711E8BC7B2002C485D /* Basket.swift in Sources */,
 				D5ACC56F1E8BC39D002C485D /* InventoryItem.swift in Sources */,
 				D5ACC5691E8BB2BD002C485D /* InventoryTableViewController.swift in Sources */,
 				D53669861E8D0FD20082643A /* BasketTableViewCell.swift in Sources */,
+				D5BB408D1E8E5D37004A00BF /* SettingsHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,6 +345,7 @@
 			files = (
 				D5ACC54C1E8BAAAB002C485D /* E5Tests.swift in Sources */,
 				D53669841E8CF8DB0082643A /* BasketTests.swift in Sources */,
+				D5BB40911E8E6482004A00BF /* CurrencyLayerTest.swift in Sources */,
 				D53669821E8CEAF90082643A /* InventoryItemTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

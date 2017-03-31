@@ -13,10 +13,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var basket: Basket!
+    var settings: Settings!
 
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-    // Override point for customization after application launch.
+    // Read in our settings file. If missing or erroneous, die.
+    
+    do {
+        try self.settings = SettingsHandler.parseSettings()
+    } catch SettingsError.missingOrInvalidSettingsEntry(let message){
+        fatalError(message)
+    } catch SettingsError.missingSettingsFile(let message){
+        fatalError(message)
+    } catch {
+        fatalError()
+    }
+    
+    let client = CurrencyLayerClient(settings: self.settings)
+    client.getExchangeRates(completionHandler: nil)
+    
+    // Set up the app's shopping basket
     self.basket = Basket()
     return true
   }
