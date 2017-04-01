@@ -8,26 +8,37 @@
 
 import UIKit
 
+enum BasketManipulation {
+    case remove
+    case add
+}
+
 class BasketTableViewCell: UITableViewCell {
 
+    //MARK: Properties
     @IBOutlet weak var symbolLabel: UILabel!
     @IBOutlet weak var countLabel: UILabel!
     
     @IBOutlet weak var stepper: UIStepper!
-    var initialValue: Int!
+    var itemCount: Int!
+    //MARK: Callbacks
+    var addOrRemoveInBasket: ((BasketManipulation) -> ())?
+    
     @IBAction func stepperChanged(_ sender: Any) {
         
         guard let myStepper = sender as? UIStepper else {
             return
         }
         
-        if myStepper.value < Double(initialValue) {
-            print("decrement")
-        } else {
-            print("increment")
-        }
+        let oldValue = itemCount!
+        itemCount = Int(myStepper.value)
+        self.countLabel.text = String(itemCount)
         
-        self.countLabel.text = String(Int(myStepper.value))
+        if myStepper.value < Double(oldValue) {
+            addOrRemoveInBasket?(BasketManipulation.remove)
+        } else {
+            addOrRemoveInBasket?(BasketManipulation.add)
+        }
         
         
     }

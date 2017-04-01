@@ -19,15 +19,8 @@ class InventoryTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+        self.tableView.allowsSelection = false
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-      
-        //
-        // load the inventory from our plist file
-        
         if let path = Bundle.main.path(forResource: "Inventory", ofType: "plist"), let arr = NSArray(contentsOfFile: path) as? [[String: Any]] {
             // use swift dictionary as normal
             
@@ -62,24 +55,37 @@ class InventoryTableViewController: UITableViewController {
     }
 
     
+    
+    /// Return a view cell and set up a callback that adds things to basket
+    ///
+    /// - Parameters:
+    ///   - tableView: our tableView
+    ///   - indexPath: the indexPath
+    /// - Returns: an InventoryTableViewCell
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         // Table view cells are reused and should be dequeued using a cell identifier.
         let cellIdentifier = "InventoryTableViewCell"
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? InventoryTableViewCell  else {
-            fatalError("The dequeued cell is not an instance of MealTableViewCell.")
+            fatalError("The dequeued cell is not an instance of InventoryTableViewCell.")
         }
         
         let item = self.inventoryArray[indexPath.row]
-        print(item)
         
+        /// A callback function that adds the cell's 
+        /// item to the basket
+        func onAdd() {
+            _ = appDelegate.basket.addItem(item: item)
+        }
         
         cell.symbolLabel.text = item.symbol
+        cell.onAdd = onAdd
         
         return cell
     }
     
+
 
     /*
     // Override to support conditional editing of the table view.
@@ -126,13 +132,6 @@ class InventoryTableViewController: UITableViewController {
     }
     */
     
-    //MARK: - Delegate
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let item = self.inventoryArray[indexPath.row]
-        
-        appDelegate.basket.addItem(item: item)
-        
-    }
 
 }

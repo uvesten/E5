@@ -68,10 +68,31 @@ class BasketViewController: UIViewController, UITableViewDataSource, UITableView
         
         cell.item = basketItem.item
         
+        func addOrRemoveInBasket(operation: BasketManipulation) {
+            
+            switch operation {
+            case BasketManipulation.add:
+                _ = self.appDelegate.basket.addItem(item: basketItem.item)
+            case BasketManipulation.remove:
+                
+                do {
+                    let newCount = try self.appDelegate.basket.removeItem(item: basketItem.item)
+                    if (newCount == 0) {
+                        self.basketTableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.fade)
+                    }
+                } catch {
+                    fatalError("Basket counting is off")
+                }
+            }
+      
+        }
+        
         cell.symbolLabel.text = basketItem.item.symbol
-        cell.initialValue = basketItem.noItems
+        cell.itemCount = basketItem.noItems
         cell.stepper.value = Double(basketItem.noItems)
         cell.countLabel.text = String(basketItem.noItems)
+        cell.addOrRemoveInBasket = addOrRemoveInBasket(operation:)
+        
         
         
        

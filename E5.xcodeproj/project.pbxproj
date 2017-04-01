@@ -134,16 +134,14 @@
 			isa = PBXGroup;
 			children = (
 				D5ACC5341E8BAAAB002C485D /* AppDelegate.swift */,
-				D5ACC5381E8BAAAB002C485D /* BasketViewController.swift */,
 				D5ACC53A1E8BAAAB002C485D /* Main.storyboard */,
 				D5ACC53D1E8BAAAB002C485D /* Assets.xcassets */,
 				D5ACC53F1E8BAAAB002C485D /* LaunchScreen.storyboard */,
 				D5ACC5421E8BAAAB002C485D /* Info.plist */,
-				D5ACC5681E8BB2BD002C485D /* InventoryTableViewController.swift */,
 				D5ACC56E1E8BC39D002C485D /* InventoryItem.swift */,
 				D5ACC5701E8BC7B2002C485D /* Basket.swift */,
-				D5ACC56A1E8BB2D3002C485D /* InventoryTableViewCell.swift */,
-				D53669851E8D0FD20082643A /* BasketTableViewCell.swift */,
+				D5FCF4121E8FA7F5000BC1B4 /* BasketViews */,
+				D5FCF4131E8FA800000BC1B4 /* InventoryViews */,
 				D5ACC56C1E8BB45D002C485D /* Inventory.plist */,
 				D5BB408A1E8E5C1A004A00BF /* Settings.plist */,
 				D5BB408C1E8E5D37004A00BF /* SettingsHandler.swift */,
@@ -171,6 +169,24 @@
 				D5ACC5581E8BAAAB002C485D /* Info.plist */,
 			);
 			path = E5UITests;
+			sourceTree = "<group>";
+		};
+		D5FCF4121E8FA7F5000BC1B4 /* BasketViews */ = {
+			isa = PBXGroup;
+			children = (
+				D5ACC5381E8BAAAB002C485D /* BasketViewController.swift */,
+				D53669851E8D0FD20082643A /* BasketTableViewCell.swift */,
+			);
+			name = BasketViews;
+			sourceTree = "<group>";
+		};
+		D5FCF4131E8FA800000BC1B4 /* InventoryViews */ = {
+			isa = PBXGroup;
+			children = (
+				D5ACC5681E8BB2BD002C485D /* InventoryTableViewController.swift */,
+				D5ACC56A1E8BB2D3002C485D /* InventoryTableViewCell.swift */,
+			);
+			name = InventoryViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -64,6 +64,7 @@ class CurrencyLayerClient {
         
     }
     
+    
     private func parseResponse(json: [String:Any]) -> ExchangeRates? {
         
         guard let timestamp = json["timestamp"] as? Int,
