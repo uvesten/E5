@@ -47,10 +47,11 @@ class CurrencyLayerTest: XCTestCase {
         
         let resultExpectation = expectation(description: "Gets a valid json result from currencylayer")
         
-        client.getExchangeRates { any in
-            XCTAssertNotNil(any, "Expected non-nil result")
+        client.getExchangeRates { rates in
+            XCTAssertNotNil(rates, "Expected non-nil result")
             
-            print(any!)
+            XCTAssert(rates?.rates[0].currency == self.settings.fromCurrency)
+            XCTAssert(rates?.rates[0].rate == 1)
             resultExpectation.fulfill()
             
         }

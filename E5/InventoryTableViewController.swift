@@ -80,6 +80,7 @@ class InventoryTableViewController: UITableViewController {
         }
         
         cell.symbolLabel.text = item.symbol
+        cell.mainLabel.text = "One " + item.unit + " of " + item.name
         cell.onAdd = onAdd
         
         return cell

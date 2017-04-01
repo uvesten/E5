@@ -12,7 +12,7 @@ import Alamofire
 struct ExchangeRates {
     
     let fromCurrency: String
-    let rates: [String: Double]
+    let rates: [(currency: String, rate: Double)]
     let updatedAt: Date
     
 }
@@ -49,6 +49,8 @@ class CurrencyLayerClient {
         Alamofire.request("http://apilayer.net/api/live", parameters: parameters).responseJSON { response in
             
             if let json = response.result.value as? [String:Any] {
+                
+                debugPrint(json)
                 if let rates = self.parseResponse(json: json) {
                     completionHandler?(rates)
                 } else {
@@ -76,13 +78,15 @@ class CurrencyLayerClient {
         
         let updatedDate = Date(timeIntervalSince1970: TimeInterval(timestamp))
         
-        // remove from currency in the response
+        var quotes = [(currency: String, rate: Double)]()
         
-        var quotes = [String:Double]()
+        // always add the from currency with a rate of 1
+        quotes.append((currency: self.settings.fromCurrency, rate: Double(1)))
         
         for (key, val) in jsonQuotes {
+            // remove from currency in the response
             let strippedKey = key.replacingOccurrences(of: self.settings.fromCurrency, with: "")
-            quotes[strippedKey] = val
+            quotes.append((currency: strippedKey, rate: val))
         }
         
         return ExchangeRates(fromCurrency: self.settings.fromCurrency, rates: quotes, updatedAt: updatedDate)

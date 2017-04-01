@@ -78,6 +78,23 @@ class Basket {
         }
     }
     
+    var basePrice: Double {
+        get {
+            var price = Double(0)
+            for (item, count) in items {
+                price += (item.unitPrice * Double(count))
+                
+            }
+            return price
+        }
+    }
+    
+    
+    func clear() {
+        arrayNeedsRefresh = true
+        items = [:]
+    }
+    
     
     
     

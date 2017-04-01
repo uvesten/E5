@@ -27,6 +27,7 @@
 		D5BB408D1E8E5D37004A00BF /* SettingsHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BB408C1E8E5D37004A00BF /* SettingsHandler.swift */; };
 		D5BB408F1E8E61A4004A00BF /* CurrencyLayerClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BB408E1E8E61A4004A00BF /* CurrencyLayerClient.swift */; };
 		D5BB40911E8E6482004A00BF /* CurrencyLayerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BB40901E8E6482004A00BF /* CurrencyLayerTest.swift */; };
+		D5FCF4151E8FB5BE000BC1B4 /* CheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FCF4141E8FB5BE000BC1B4 /* CheckoutViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		D5BB408C1E8E5D37004A00BF /* SettingsHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsHandler.swift; sourceTree = "<group>"; };
 		D5BB408E1E8E61A4004A00BF /* CurrencyLayerClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyLayerClient.swift; sourceTree = "<group>"; };
 		D5BB40901E8E6482004A00BF /* CurrencyLayerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyLayerTest.swift; sourceTree = "<group>"; };
+		D5FCF4141E8FB5BE000BC1B4 /* CheckoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +148,7 @@
 				D5BB408A1E8E5C1A004A00BF /* Settings.plist */,
 				D5BB408C1E8E5D37004A00BF /* SettingsHandler.swift */,
 				D5BB408E1E8E61A4004A00BF /* CurrencyLayerClient.swift */,
+				D5FCF4141E8FB5BE000BC1B4 /* CheckoutViewController.swift */,
 			);
 			path = E5;
 			sourceTree = "<group>";
@@ -351,6 +354,7 @@
 				D5ACC56F1E8BC39D002C485D /* InventoryItem.swift in Sources */,
 				D5ACC5691E8BB2BD002C485D /* InventoryTableViewController.swift in Sources */,
 				D53669861E8D0FD20082643A /* BasketTableViewCell.swift in Sources */,
+				D5FCF4151E8FB5BE000BC1B4 /* CheckoutViewController.swift in Sources */,
 				D5BB408D1E8E5D37004A00BF /* SettingsHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

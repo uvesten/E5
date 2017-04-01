@@ -20,7 +20,7 @@ class BasketViewController: UIViewController, UITableViewDataSource, UITableView
     // Do any additional setup after loading the view, typically from a nib.
   }
     
-    override func viewDidAppear(_ animated:Bool) {
+    override func viewWillAppear(_ animated:Bool) {
         self.basketTableView.reloadData()
     }
 
@@ -31,6 +31,15 @@ class BasketViewController: UIViewController, UITableViewDataSource, UITableView
     super.didReceiveMemoryWarning()
     // Dispose of any resources that can be recreated.
   }
+    
+    // MARK: Segues
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let covc = segue.destination as? CheckoutViewController {
+            covc.basket = appDelegate.basket
+            covc.exchangeRates = appDelegate.rates
+            
+    }
+    }
     
     // MARK: - Table view data source
     

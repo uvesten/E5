@@ -95,6 +95,20 @@ class BasketTests: XCTestCase {
         
     }
     
+    func testClear() {
+        let basket = Basket()
+        
+        _ = basket.addItem(item: self.item1)
+        _ = basket.addItem(item: self.item1)
+        
+        XCTAssert(basket.sortedItemArray.count == 1)
+        
+        basket.clear()
+        
+        XCTAssert(basket.sortedItemArray.count == 0)
+        
+    }
+    
     func testRemoveUnexisting() {
         let basket = Basket()
         
