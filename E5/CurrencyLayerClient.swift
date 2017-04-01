@@ -9,6 +9,18 @@
 import Foundation
 import Alamofire
 
+struct ExchangeRates {
+    
+    let fromCurrency: String
+    let rates: [String: Double]
+    let updatedAt: Date
+    
+}
+
+enum CurrencyLayerError: Error {
+    case invalidJson
+}
+
 class CurrencyLayerClient {
     
     var settings: Settings!
@@ -26,7 +38,8 @@ class CurrencyLayerClient {
     /// & source = GBP
     /// & currencies = USD,AUD,CAD,PLN,MXN
     /// & format = 1
-    func getExchangeRates(completionHandler: ((Any?) -> ())?) {
+    /// - Parameter completionHandler: a function that does something with the returned ExchangeRates?
+    func getExchangeRates(completionHandler: ((ExchangeRates?) -> ())?) {
         
         let parameters = ["access_key": settings.apiKey,
                           "source": settings.fromCurrency,
@@ -34,10 +47,13 @@ class CurrencyLayerClient {
                           "format": 1] as [String : Any]
         
         Alamofire.request("http://apilayer.net/api/live", parameters: parameters).responseJSON { response in
-            debugPrint(response)
             
-            if let json = response.result.value  {
-                completionHandler?(json)
+            if let json = response.result.value as? [String:Any] {
+                if let rates = self.parseResponse(json: json) {
+                    completionHandler?(rates)
+                } else {
+                    completionHandler?(nil)
+                }
             } else {
                 completionHandler?(nil)
             }
@@ -48,5 +64,28 @@ class CurrencyLayerClient {
         
     }
     
+    private func parseResponse(json: [String:Any]) -> ExchangeRates? {
+        
+        guard let timestamp = json["timestamp"] as? Int,
+            let jsonQuotes = json["quotes"] as? [String:Double]
+            else {
+                return nil
+        }
+        
+        
+        let updatedDate = Date(timeIntervalSince1970: TimeInterval(timestamp))
+        
+        // remove from currency in the response
+        
+        var quotes = [String:Double]()
+        
+        for (key, val) in jsonQuotes {
+            let strippedKey = key.replacingOccurrences(of: self.settings.fromCurrency, with: "")
+            quotes[strippedKey] = val
+        }
+        
+        return ExchangeRates(fromCurrency: self.settings.fromCurrency, rates: quotes, updatedAt: updatedDate)
+        
+    }
     
 }
