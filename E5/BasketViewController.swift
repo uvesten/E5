@@ -34,17 +34,7 @@ class BasketViewController: UIViewController, UITableViewDataSource, UITableView
     
     // MARK: - Table view data source
     
-    
-    func basketToList() -> [(item: InventoryItem, noItems: Int)] {
-        
-        var basketList = [(item: InventoryItem, noItems: Int)]()
-        for (key, value) in appDelegate.basket.items {
-            
-            basketList.append((item: key, noItems: value))
-        }
-        
-        return basketList
-    }
+
      func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
@@ -52,7 +42,7 @@ class BasketViewController: UIViewController, UITableViewDataSource, UITableView
     
      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return appDelegate.basket.items.count
+        return appDelegate.basket.sortedItemArray.count
     }
 
     
@@ -64,7 +54,7 @@ class BasketViewController: UIViewController, UITableViewDataSource, UITableView
             fatalError("The dequeued cell is not an instance of UITableViewCell.")
         }
         
-        let basketItem = basketToList()[indexPath.row]
+        let basketItem = appDelegate.basket.sortedItemArray[indexPath.row]
         
         cell.item = basketItem.item
         
@@ -79,6 +69,7 @@ class BasketViewController: UIViewController, UITableViewDataSource, UITableView
                     let newCount = try self.appDelegate.basket.removeItem(item: basketItem.item)
                     if (newCount == 0) {
                         self.basketTableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.fade)
+                        self.basketTableView.reloadData()
                     }
                 } catch {
                     fatalError("Basket counting is off")

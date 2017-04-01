@@ -14,6 +14,7 @@ class BasketTests: XCTestCase {
     
     var item1: InventoryItem!
     var item2: InventoryItem!
+    var basket: Basket!
    
     
     override func setUp() {
@@ -28,6 +29,8 @@ class BasketTests: XCTestCase {
         self.item1 = try! InventoryItem(dict: anItemDict1)
         self.item2 = try! InventoryItem(dict: anItemDict2)
         
+        basket = Basket()
+                
         
     }
     
@@ -37,12 +40,14 @@ class BasketTests: XCTestCase {
     }
     
     func testAddOneItem() {
-        let basket = Basket()
+        
         
         XCTAssert(basket.addItem(item: self.item1) == 1)
         
         XCTAssertTrue(basket.items.count == 1)
         XCTAssertTrue(basket.items[item1] == 1)
+        
+        XCTAssert(basket.sortedItemArray.count == 1)
         
     }
     
@@ -54,6 +59,8 @@ class BasketTests: XCTestCase {
         
         XCTAssertTrue(basket.items.count == 1)
         XCTAssertTrue(basket.items[item1] == 2)
+        
+        XCTAssert(basket.sortedItemArray.count == 1)
         
     }
     
@@ -69,6 +76,8 @@ class BasketTests: XCTestCase {
         XCTAssertTrue(basket.items.count == 2)
         XCTAssertTrue(basket.items[item1] == 1)
         XCTAssertTrue(basket.items[item2] == 1)
+        
+        XCTAssert(basket.sortedItemArray.count == 2)
 
         
     }
@@ -78,6 +87,8 @@ class BasketTests: XCTestCase {
         
         XCTAssert(basket.addItem(item: self.item1) == 1)
         XCTAssert(try basket.removeItem(item: self.item1) == 0)
+        
+        XCTAssert(basket.sortedItemArray.count == 0)
         
         
         

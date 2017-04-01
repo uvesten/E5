@@ -18,7 +18,8 @@ enum BasketError: Error {
 class Basket {
     
     var items = [InventoryItem:Int]()
-    
+    private var arrayNeedsRefresh = false
+    private var internalItemArray = [(item: InventoryItem, noItems: Int)]()
     
     /// Add an item to our shopping basket
     ///
@@ -26,12 +27,15 @@ class Basket {
     /// - Returns: The number of that item in the basket
     func addItem(item: InventoryItem) -> Int {
         
+        arrayNeedsRefresh = true
+        
         guard items[item] != nil else {
             items[item] = 1
             return 1
         }
         
         items[item]? += 1
+        
         
         return items[item]!
         
@@ -47,6 +51,7 @@ class Basket {
         guard items[item] != nil else {
             throw BasketError.removeUnexisting(message: "Tried to remove unexisting item " + item.name + " from basket.")
         }
+        arrayNeedsRefresh = true
         
         items[item]? -= 1
         let itemCount = items[item]!
@@ -58,6 +63,22 @@ class Basket {
         return itemCount
         
     }
+    
+    var sortedItemArray: [(item: InventoryItem, noItems: Int)] {
+        get {
+            if arrayNeedsRefresh {
+                internalItemArray = []
+                let sortedKeys = items.keys.sorted()
+                for key in sortedKeys {
+                    internalItemArray.append((item: key, noItems: items[key]!))
+                }
+            }
+            arrayNeedsRefresh = false
+            return internalItemArray
+        }
+    }
+    
+    
     
     
     
