@@ -9,17 +9,7 @@
 import Foundation
 import Alamofire
 
-struct ExchangeRates {
-    
-    let fromCurrency: String
-    let rates: [(currency: String, rate: Double)]
-    let updatedAt: Date
-    
-}
 
-enum CurrencyLayerError: Error {
-    case invalidJson
-}
 
 class CurrencyLayerClient {
     
@@ -39,7 +29,7 @@ class CurrencyLayerClient {
     /// & currencies = USD,AUD,CAD,PLN,MXN
     /// & format = 1
     /// - Parameter completionHandler: a function that does something with the returned ExchangeRates?
-    func getExchangeRates(completionHandler: ((ExchangeRates?) -> ())?) {
+    func getExchangeRates(completionHandler: (([String: Any]?) -> ())?) {
         
         let parameters = ["access_key": settings.apiKey,
                           "source": settings.fromCurrency,
@@ -50,12 +40,8 @@ class CurrencyLayerClient {
             
             if let json = response.result.value as? [String:Any] {
                 
-                debugPrint(json)
-                if let rates = self.parseResponse(json: json) {
-                    completionHandler?(rates)
-                } else {
-                    completionHandler?(nil)
-                }
+                completionHandler?(json)
+                
             } else {
                 completionHandler?(nil)
             }
@@ -63,33 +49,6 @@ class CurrencyLayerClient {
             
             
         }
-        
-    }
-    
-    
-    private func parseResponse(json: [String:Any]) -> ExchangeRates? {
-        
-        guard let timestamp = json["timestamp"] as? Int,
-            let jsonQuotes = json["quotes"] as? [String:Double]
-            else {
-                return nil
-        }
-        
-        
-        let updatedDate = Date(timeIntervalSince1970: TimeInterval(timestamp))
-        
-        var quotes = [(currency: String, rate: Double)]()
-        
-        // always add the from currency with a rate of 1
-        quotes.append((currency: self.settings.fromCurrency, rate: Double(1)))
-        
-        for (key, val) in jsonQuotes {
-            // remove from currency in the response
-            let strippedKey = key.replacingOccurrences(of: self.settings.fromCurrency, with: "")
-            quotes.append((currency: strippedKey, rate: val))
-        }
-        
-        return ExchangeRates(fromCurrency: self.settings.fromCurrency, rates: quotes, updatedAt: updatedDate)
         
     }
     

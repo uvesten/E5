@@ -1,0 +1,13 @@
+{
+    "success":true,
+    "terms":"https:\/\/currencylayer.com\/terms",
+    "privacy":"https:\/\/currencylayer.com\/privacy",
+    "timestamp":1491052868,
+    "source":"USD",
+    "quotes":{
+        "USDEUR":0.937304,
+        "USDGBP":0.79713,
+        "USDCAD":1.331804,
+        "USDPLN":3.961304
+    }
+}

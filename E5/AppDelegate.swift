@@ -29,24 +29,50 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             fatalError()
         }
         
-        let client = CurrencyLayerClient(settings: self.settings)
-        client.getExchangeRates(completionHandler: receiveExchangeRates)
+        // load stored json rates
+        let erh = ExchangeRatesHandler()
+        let storedJson = erh.loadExchangeRatesJson()
+        guard let exchangeRates = ExchangeRates(json: storedJson, settings: self.settings) else {
+            fatalError("No valid saved json results")
+        }
+        self.rates = exchangeRates
+        
+        
+        // if needed, update exchange rates
+        optionallyUpdateExchangeRate()
         
         // Set up the app's shopping basket
         self.basket = Basket()
         return true
     }
     
-    func receiveExchangeRates(ratesFromService: ExchangeRates?) {
+    func receiveExchangeRates(ratesFromService: [String: Any]?) {
         
-        
-        if ratesFromService  != nil {
-            self.rates = ratesFromService!
+        guard let rates = ratesFromService else {
+            return
         }
         
-        
+        guard let exchangeRates = ExchangeRates(json: rates, settings: self.settings) else {
+            return
+        }
+        self.rates = exchangeRates
+        let erh = ExchangeRatesHandler()
+        erh.saveExchangeRatesJson(json: ratesFromService!)
     }
     
+    
+    /// Update exchange rate if old data is more than one hour old
+    func optionallyUpdateExchangeRate() {
+        let now = Date.init()
+        if (now > self.rates.updatedAt.addingTimeInterval(TimeInterval(3600))) {
+            print("Updating data")
+            let client = CurrencyLayerClient(settings: self.settings)
+            client.getExchangeRates(completionHandler: receiveExchangeRates)
+        }
+    }
+    
+    
+
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
@@ -59,6 +85,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        // if needed, update exchange rates
+        optionallyUpdateExchangeRate()
     }
     
     func applicationDidBecomeActive(_ application: UIApplication) {
