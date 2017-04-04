@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CURRENCYLAYER_FROM</key>
+	<string>USD</string>
+	<key>CURRENCYLAYER_API_KEY</key>
+	<string>INVALID</string>
+	<key>CURRENCYLAYER_TO</key>
+	<array>
+		<string>EUR, CAD, SEK, CHF</string>
+	</array>
+	<key>JSON_SEED_FILENAME</key>
+	<string>exchangeRateSeed.json</string>
+	<key>JSON_CACHE_FILENAME</key>
+	<string>cachedRates.json</string>
+</dict>
+</plist>
