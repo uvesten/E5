@@ -126,5 +126,31 @@ class BasketTests: XCTestCase {
         
     }
     
+    func testPerformanceCreate() {
+        self.measure {
+            _ = Basket()
+        }
+    }
+    
+    func testPerformanceAdd1000() {
+        self.measure {
+            let basket = Basket()
+            
+            for _ in 0...1000 {
+                _ = basket.addItem(item: self.item1)
+            }
+        }
+        
+    }
+    
+    func testPerformanceAdd1000SerializeEach() {
+        self.measure {
+            let basket = Basket()
+            for _ in 0...1000 {
+                _ = basket.addItem(item: self.item1)
+                _ = basket.sortedItemArray
+            }
+        }
+    }
     
 }
