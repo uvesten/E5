@@ -41,17 +41,46 @@ class CurrencyLayerTest: XCTestCase {
     
     }
     
+    /// Test getting rates. Needs a correct api key
     func testGetRates() {
         
         let client = CurrencyLayerClient(settings: self.settings)
         
         let resultExpectation = expectation(description: "Gets a valid json result from currencylayer")
         
-        client.getExchangeRates { rates in
-            XCTAssertNotNil(rates, "Expected non-nil result")
+        client.getExchangeRates { jsonRates in
+            XCTAssertNotNil(jsonRates, "Expected non-nil result")
+            
+            let rates = ExchangeRates(json: jsonRates!, settings: self.settings)
             
             XCTAssert(rates?.rates[0].currency == self.settings.fromCurrency)
             XCTAssert(rates?.rates[0].rate == 1)
+            resultExpectation.fulfill()
+            
+        }
+        waitForExpectations(timeout: 5.0, handler: nil)
+ 
+    }
+    
+    /// Test that a wrong api key returns json with error
+    func testWrongAPIKey() {
+        
+        var wrongSettings = self.settings
+        wrongSettings?.apiKey = "INVALID"
+        
+        let client = CurrencyLayerClient(settings: wrongSettings!)
+        
+        let resultExpectation = expectation(description: "Gets an error in the JSON from currencylayer")
+        
+        client.getExchangeRates { jsonRates in
+            
+            guard let rates = jsonRates else {
+                XCTFail()
+                return
+            }
+            
+            XCTAssertNotNil(rates["error"]!)
+
             resultExpectation.fulfill()
             
         }

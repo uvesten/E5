@@ -13,6 +13,8 @@ struct Settings {
     var apiKey: String
     var toCurrencies: [String]
     var fromCurrency: String
+    var jsonSeedFilename: String
+    var jsonCacheFilename: String
     
 }
 
@@ -38,8 +40,17 @@ class SettingsHandler {
             guard let fromCurrency = dict["CURRENCYLAYER_FROM"] as? String else {
                 throw SettingsError.missingOrInvalidSettingsEntry(message: "Settings item missing or invalid \"CURRENCYLAYER_FROM\"")
             }
+            
+            guard let jsonSeedFilename = dict["JSON_SEED_FILENAME"] as? String else {
+                throw SettingsError.missingOrInvalidSettingsEntry(message: "Settings item missing or invalid \"JSON_SEED_FILENAME\"")
+            }
+            
+            guard let jsonCacheFilename = dict["JSON_CACHE_FILENAME"] as? String else {
+                throw SettingsError.missingOrInvalidSettingsEntry(message: "Settings item missing or invalid \"JSON_CACHE_FILENAME\"")
+            }
 
-            return Settings(apiKey: apiKey, toCurrencies: toCurrencies, fromCurrency: fromCurrency)
+            return Settings(apiKey: apiKey, toCurrencies: toCurrencies, fromCurrency: fromCurrency,
+                            jsonSeedFilename: jsonSeedFilename, jsonCacheFilename: jsonCacheFilename)
         } else {
             throw SettingsError.missingSettingsFile(message: "The settings file Settings.plist is missing")
         }

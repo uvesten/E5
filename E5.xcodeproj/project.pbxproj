@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D52851131E93A98100044A93 /* ExchangeRatesHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52851121E93A98100044A93 /* ExchangeRatesHandler.swift */; };
+		D52851151E93AC3F00044A93 /* ExchangeRateHandlerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52851141E93AC3F00044A93 /* ExchangeRateHandlerTest.swift */; };
 		D53669821E8CEAF90082643A /* InventoryItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D53669811E8CEAF90082643A /* InventoryItemTests.swift */; };
 		D53669841E8CF8DB0082643A /* BasketTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D53669831E8CF8DB0082643A /* BasketTests.swift */; };
 		D53669861E8D0FD20082643A /* BasketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D53669851E8D0FD20082643A /* BasketTableViewCell.swift */; };
@@ -29,7 +31,7 @@
 		D5BB40911E8E6482004A00BF /* CurrencyLayerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BB40901E8E6482004A00BF /* CurrencyLayerTest.swift */; };
 		D5FCF4151E8FB5BE000BC1B4 /* CheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FCF4141E8FB5BE000BC1B4 /* CheckoutViewController.swift */; };
 		D5FCF4171E8FCA14000BC1B4 /* ExchangeRates.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FCF4161E8FCA14000BC1B4 /* ExchangeRates.swift */; };
-		D5FCF4191E8FE2EA000BC1B4 /* initialRates.json in Resources */ = {isa = PBXBuildFile; fileRef = D5FCF4181E8FE2EA000BC1B4 /* initialRates.json */; };
+		D5FCF4191E8FE2EA000BC1B4 /* exchangeRateSeed.json in Resources */ = {isa = PBXBuildFile; fileRef = D5FCF4181E8FE2EA000BC1B4 /* exchangeRateSeed.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +52,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D52851121E93A98100044A93 /* ExchangeRatesHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExchangeRatesHandler.swift; sourceTree = "<group>"; };
+		D52851141E93AC3F00044A93 /* ExchangeRateHandlerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExchangeRateHandlerTest.swift; sourceTree = "<group>"; };
 		D53669811E8CEAF90082643A /* InventoryItemTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryItemTests.swift; sourceTree = "<group>"; };
 		D53669831E8CF8DB0082643A /* BasketTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasketTests.swift; sourceTree = "<group>"; };
 		D53669851E8D0FD20082643A /* BasketTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasketTableViewCell.swift; sourceTree = "<group>"; };
@@ -78,7 +82,7 @@
 		D5BB40901E8E6482004A00BF /* CurrencyLayerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyLayerTest.swift; sourceTree = "<group>"; };
 		D5FCF4141E8FB5BE000BC1B4 /* CheckoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutViewController.swift; sourceTree = "<group>"; };
 		D5FCF4161E8FCA14000BC1B4 /* ExchangeRates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExchangeRates.swift; sourceTree = "<group>"; };
-		D5FCF4181E8FE2EA000BC1B4 /* initialRates.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = initialRates.json; sourceTree = "<group>"; };
+		D5FCF4181E8FE2EA000BC1B4 /* exchangeRateSeed.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = exchangeRateSeed.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,7 +158,8 @@
 				D5BB408E1E8E61A4004A00BF /* CurrencyLayerClient.swift */,
 				D5FCF4161E8FCA14000BC1B4 /* ExchangeRates.swift */,
 				D5FCF4141E8FB5BE000BC1B4 /* CheckoutViewController.swift */,
-				D5FCF4181E8FE2EA000BC1B4 /* initialRates.json */,
+				D5FCF4181E8FE2EA000BC1B4 /* exchangeRateSeed.json */,
+				D52851121E93A98100044A93 /* ExchangeRatesHandler.swift */,
 			);
 			path = E5;
 			sourceTree = "<group>";
@@ -162,6 +167,7 @@
 		D5ACC54A1E8BAAAB002C485D /* E5Tests */ = {
 			isa = PBXGroup;
 			children = (
+				D52851141E93AC3F00044A93 /* ExchangeRateHandlerTest.swift */,
 				D5BB40901E8E6482004A00BF /* CurrencyLayerTest.swift */,
 				D53669831E8CF8DB0082643A /* BasketTests.swift */,
 				D53669811E8CEAF90082643A /* InventoryItemTests.swift */,
@@ -310,7 +316,7 @@
 				D5ACC53E1E8BAAAB002C485D /* Assets.xcassets in Resources */,
 				D5ACC53C1E8BAAAB002C485D /* Main.storyboard in Resources */,
 				D5ACC56D1E8BB45D002C485D /* Inventory.plist in Resources */,
-				D5FCF4191E8FE2EA000BC1B4 /* initialRates.json in Resources */,
+				D5FCF4191E8FE2EA000BC1B4 /* exchangeRateSeed.json in Resources */,
 				D5BB408B1E8E5C1A004A00BF /* Settings.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -362,6 +368,7 @@
 				D5ACC5691E8BB2BD002C485D /* InventoryTableViewController.swift in Sources */,
 				D53669861E8D0FD20082643A /* BasketTableViewCell.swift in Sources */,
 				D5FCF4151E8FB5BE000BC1B4 /* CheckoutViewController.swift in Sources */,
+				D52851131E93A98100044A93 /* ExchangeRatesHandler.swift in Sources */,
 				D5BB408D1E8E5D37004A00BF /* SettingsHandler.swift in Sources */,
 				D5FCF4171E8FCA14000BC1B4 /* ExchangeRates.swift in Sources */,
 			);
@@ -372,6 +379,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D5ACC54C1E8BAAAB002C485D /* E5Tests.swift in Sources */,
+				D52851151E93AC3F00044A93 /* ExchangeRateHandlerTest.swift in Sources */,
 				D53669841E8CF8DB0082643A /* BasketTests.swift in Sources */,
 				D5BB40911E8E6482004A00BF /* CurrencyLayerTest.swift in Sources */,
 				D53669821E8CEAF90082643A /* InventoryItemTests.swift in Sources */,

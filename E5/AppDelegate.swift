@@ -31,11 +31,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // load stored json rates
         let erh = ExchangeRatesHandler()
-        let storedJson = erh.loadExchangeRatesJson()
-        guard let exchangeRates = ExchangeRates(json: storedJson, settings: self.settings) else {
-            fatalError("No valid saved json results")
+        do {
+            let storedJson = try erh.loadExchangeRatesJson(seedFileName: self.settings.jsonSeedFilename,
+                                                       cacheFileName: self.settings.jsonCacheFilename)
+            guard let exchangeRates = ExchangeRates(json: storedJson, settings: self.settings) else {
+                fatalError("No valid saved json results")
+            }
+            self.rates = exchangeRates
+            
+        } catch ExchangeRatesHandlerError.couldNotRead(let message){
+            fatalError(message)
+        } catch {
+            fatalError("Unknown error reading json data from storage")
         }
-        self.rates = exchangeRates
+        
+            
         
         
         // if needed, update exchange rates
@@ -43,7 +53,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Set up the app's shopping basket
         self.basket = Basket()
+        
         return true
+        
     }
     
     func receiveExchangeRates(ratesFromService: [String: Any]?) {
@@ -57,7 +69,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         self.rates = exchangeRates
         let erh = ExchangeRatesHandler()
-        erh.saveExchangeRatesJson(json: ratesFromService!)
+        
+        do {
+            try erh.saveExchangeRatesJson(json: ratesFromService!, cacheFileName: self.settings.jsonCacheFilename)
+        } catch ExchangeRatesHandlerError.couldNotWrite(let message) {
+            debugPrint(message)
+        } catch {
+            debugPrint("Error when storing json cache")
+        }
+        
     }
     
     
