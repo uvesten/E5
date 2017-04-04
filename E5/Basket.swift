@@ -95,6 +95,15 @@ class Basket {
         items = [:]
     }
     
+    var empty: Bool {
+        get {
+            if self.items.count == 0 {
+                return true
+            }
+            return false
+        }
+    }
+    
     
     
     

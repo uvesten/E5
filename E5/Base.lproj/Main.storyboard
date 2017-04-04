@@ -117,6 +117,7 @@
                     <tabBarItem key="tabBarItem" title="Shopping Basket" image="second" id="cPa-gy-q4n"/>
                     <connections>
                         <outlet property="basketTableView" destination="PzE-0Y-0wU" id="6PJ-Dv-16G"/>
+                        <outlet property="checkoutButton" destination="KbC-CV-7d0" id="Pfb-Wi-Feb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>

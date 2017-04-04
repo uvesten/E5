@@ -11,6 +11,7 @@ import UIKit
 class BasketViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var basketTableView: UITableView!
+    @IBOutlet weak var checkoutButton: UIButton!
     
   let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
@@ -22,6 +23,11 @@ class BasketViewController: UIViewController, UITableViewDataSource, UITableView
     
     override func viewWillAppear(_ animated:Bool) {
         self.basketTableView.reloadData()
+        if appDelegate.basket.empty {
+            self.checkoutButton.isEnabled = false
+        } else {
+            self.checkoutButton.isEnabled = true
+        }
     }
 
 
@@ -83,6 +89,12 @@ class BasketViewController: UIViewController, UITableViewDataSource, UITableView
                 } catch {
                     fatalError("Basket counting is off")
                 }
+            }
+            
+            if self.appDelegate.basket.empty {
+                self.checkoutButton.isEnabled = false
+            } else {
+                self.checkoutButton.isEnabled = true
             }
       
         }
